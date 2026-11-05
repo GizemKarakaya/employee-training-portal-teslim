@@ -29,7 +29,7 @@ Her uygulama kendi Laravel kurulumu, `.env`, migration'ları, modelleri, rotalar
 3. Eğitim detayında personel adları ve iletişim bilgileri güncel API yanıtından oluşturulur, yerel veritabanına yazılmaz.
 4. Harici personel silinmişse tarihsel atama korunur ve kişinin artık erişilebilir olmadığı belirtilir. API erişilemiyorsa bu durum silinmiş kişiyle karıştırılmaz.
 5. API bağlantı hatası, `401`, `404`, `5xx` ve biçimi geçersiz yanıtlar kontrollü şekilde ele alınır; hatalı personel bilgisi üretilmez.
-6. Portalın `GET /api/assignments/{id}` uç noktası yerel atama durumunu JSON olarak döndürür; bu uç nokta demo arayüzü gibi kimlik doğrulamasızdır.
+6. Portalın `GET /api/assignments/{id}` uç noktası yerel atama durumunu JSON olarak döndürür ve oturum açmış yönetici gerektirir.
 
 ## Güvenlik
 
@@ -37,4 +37,4 @@ Her uygulama kendi Laravel kurulumu, `.env`, migration'ları, modelleri, rotalar
 - Boş veya yapılandırılmamış token tüm API isteklerini reddeder.
 - Token HTML'e, tarayıcı JavaScript'ine veya API yanıtına konmaz; Portal'dan sunucu taraflı `withToken()` ile gönderilir.
 - `.env` ve SQLite dosyaları Git dışında tutulur. Gerçek dağıtımda HTTPS kullanılmalı; yerel HTTP yalnızca demo içindir.
-- Gerçek dağıtım öncesinde Training Portal kullanıcı arayüzüne ve atama durum API'sine kimlik doğrulaması/yetkilendirme eklenmelidir.
+- Her iki uygulamanın yönetim arayüzleri ve Portal atama durum API'si oturum kimlik doğrulamasıyla korunur.
