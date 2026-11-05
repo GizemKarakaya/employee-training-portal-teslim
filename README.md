@@ -180,7 +180,6 @@ Testler izole test veritabanı kullanır; portalın birim/feature testlerinde d�
 4. Atamanın önce “Bekliyor” olduğunu, sonra tamamlandı olarak işaretlendiğini ve tarihin kaydedildiğini gösterin.
 5. Genel Bakış'a dönüp toplam eğitim, atama, bekleyen ve tamamlanan sayaçlarını gösterin.
 
-2–3 dakikalık ekran kaydı için ayrıntılı akış: [docs/demo-script.md](./docs/demo-script.md).
 
 ## 12. Teknik kararlar ve sonraki geliştirme olanakları
 
