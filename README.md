@@ -16,6 +16,10 @@ Personel Yönetim Sistemi; çalışanların ad, soyad, e-posta ve departman bilg
 
 PHP kurulumu SQLite/PDO SQLite, cURL, mbstring ve OpenSSL eklentilerini içermelidir. npm ve Node.js, yalnızca frontend varlıklarını derlemek için gerekir. Docker yapılandırması bu projenin kurulum yöntemi değildir.
 
+### Oracle Cloud Always Free dağıtımı
+
+Tek Ubuntu ARM64 VM üzerinde iki ayrı Laravel uygulaması ve iki kalıcı SQLite veritabanı için dağıtım planı, Caddy örneği ve güvenli güncelleme adımları [DEPLOYMENT-ORACLE.md](./DEPLOYMENT-ORACLE.md) içinde yer alır. Bu hazırlık Oracle kaynaklarını oluşturmaz; gerçek instance şeklinin ve Always Free kotasının Oracle konsolunda doğrulanması gerekir.
+
 ## 3. Sistem mimarisi
 
 ```text
@@ -188,5 +192,3 @@ Testler izole test veritabanı kullanır; portalın birim/feature testlerinde d�
 - **REST API:** Portal, personel verisini kendi kopyasında tutmak yerine ihtiyaç anında servis üzerinden alır. API token'ı sunucu-sunucu iletişimini sınırlar.
 - **Tekrarlı atama koruması:** Uygulama kontrolü kullanıcıya anlaşılır hata verir; veritabanı benzersiz kısıtı eşzamanlı tekrarları da engeller.
 - **Servis kesintisi:** Portal mevcut atama kayıtlarını göstermeye devam eder, dış personel ayrıntısını erişilemez olarak belirtir ve yeni personel doğrulaması gerektiren atamayı kabul etmez.
-
-Üretim ortamına geçiş ayrı bir dağıtım ve güvenlik çalışması gerektirir: HTTPS/TLS arkasında `APP_ENV=production`, `APP_DEBUG=false`, `SESSION_SECURE_COOKIE=true`, `SESSION_HTTP_ONLY=true` ve `SESSION_SAME_SITE=lax` ayarlarını kullanın. Yerel HTTP demoda `SESSION_SECURE_COOKIE=false` kalabilir; HTTPS olmayan ortamda bunu `true` yapmak oturum çerezinin gönderilmesini engelleyebilir. Ayrıca secret manager ile anahtar/token yönetimi, merkezi veritabanı ve yedekleme, log/izleme, erişim politikaları ve dağıtım altyapısına uygun oran sınırlama planlanmalıdır. Bu depodaki demo, üretim ortamında çalıştığı iddiasında değildir.

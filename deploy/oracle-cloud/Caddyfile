@@ -1,0 +1,17 @@
+personnel.92-5-64-118.sslip.io {
+	root * /srv/employee-training-portal/personnel-service/public
+	php_fastcgi unix//run/php/php8.3-fpm.sock {
+		env HTTPS on
+	}
+	file_server
+	encode zstd gzip
+}
+
+training.92-5-64-118.sslip.io {
+	root * /srv/employee-training-portal/training-portal/public
+	php_fastcgi unix//run/php/php8.3-fpm.sock {
+		env HTTPS on
+	}
+	file_server
+	encode zstd gzip
+}
